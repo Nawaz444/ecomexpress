@@ -19,12 +19,16 @@ class home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            ecomexpressId:  '',
+            name:   '',
             number:'',
-          
+            fromaddress: '',
+            toaddress: '',
+            date: '',
+    
         };
         this.addNew = this.addNew.bind(this);
-        this.mycontact = this.mycontact.bind(this);
+        this.mynotes = this.mynotes.bind(this);
      
         
     }
@@ -34,17 +38,20 @@ class home extends React.Component {
         const { search } = location;
         const queryParams = qs.parse(search.slice(1));
         if (queryParams.admissionsId); {
-            const { data } = await axios.get(`http://localhost:3000/contacts/${queryParams.contactId}`);
+            const { data } = await axios.get(`http://localhost:4000/notepad/${queryParams. ecomexpressId,name,number, fromaddress,  toaddress,  date}`);
             this.setState({
-                contactId: queryParams.contactId,
-                name: data.value.name,
+                ecomexpressId:   data.value.ecomexpressId,
+                name:   data.value.name,
                 number:data.value.number,
-               
+                fromaddress:data.value,request,
+                toaddress:data.value.toaddress,
+                date:data.value.date
+
             });
         }
     }
    
-   async mycontact(){
+   async mynotes(){
 
     const { history } = this.props;
         history.push('/Display');
@@ -52,8 +59,8 @@ class home extends React.Component {
 
   async addNew() {
     
-    const {name,number} = this.state;
-    await axios.post('http://localhost:3000/contacts', { name,number });
+    const {ecomexpressId,name,number, fromaddress,  toaddress,  date} = this.state;
+    await axios.post('http://localhost:4000/ecomexpress', { ecomexpressId,name,number, fromaddress,  toaddress,  date});
     
 };
 
@@ -68,7 +75,7 @@ class home extends React.Component {
                    
                  
                     <Typography variant="h6" >
-                    name
+                    ecomexpress
                      </Typography>
                     
                   </Toolbar>
@@ -82,7 +89,25 @@ class home extends React.Component {
                         name: event.target.value,
                     }))}
                 />
-                <input
+                      <textarea
+                    placeholder="fromaddress"
+                    rows="10"
+                    cols="70"
+                    onChange={(event) => this.setState((prev) => ({
+                        fromaddress: event.target.value,
+                        
+                    }))}
+                />
+                 <textarea
+                    placeholder="toaddress"
+                    rows="10"
+                    cols="70"
+                    onChange={(event) => this.setState((prev) => ({
+                        toaddress: event.target.value,
+                        
+                    }))}
+                />
+                  <input
                     type="text"
                     placeholder=" number"
                     onChange={(event) => this.setState((prev) => ({
@@ -90,10 +115,18 @@ class home extends React.Component {
                         number: event.target.value,
                     }))}
                 />
-                     
+                  <input
+                    type="text"
+                    placeholder=" date"
+                    onChange={(event) => this.setState((prev) => ({
+                        
+                        date: event.target.value,
+                    }))}
+                />
                 
-                <button type="button" onClick={this.addNew}>save contact</button>
-                <button type="button" onClick={this.mycontact}>saved notes</button>
+                
+                <button type="button" onClick={this.addNew}>save parcel address</button>
+                <button type="button" onClick={this.mynotes}>saved </button>
              
             </div>
         );

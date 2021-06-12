@@ -1,0 +1,192 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouterDom = require('react-router-dom');
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _querystring = require('querystring');
+  var _querystringDefault = _parcelHelpers.interopDefault(_querystring);
+  require('@material-ui/core/Button');
+  require('@material-ui/core/MenuItem');
+  var _materialUiCoreTypography = require('@material-ui/core/Typography');
+  var _materialUiCoreTypographyDefault = _parcelHelpers.interopDefault(_materialUiCoreTypography);
+  var _materialUiCoreAppBar = require('@material-ui/core/AppBar');
+  var _materialUiCoreAppBarDefault = _parcelHelpers.interopDefault(_materialUiCoreAppBar);
+  var _materialUiCoreToolbar = require('@material-ui/core/Toolbar');
+  var _materialUiCoreToolbarDefault = _parcelHelpers.interopDefault(_materialUiCoreToolbar);
+  var _jsxFileName = "D:\\my applications\\ecomexpress\\src\\screens\\home.jsx";
+  class home extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        ecomexpressId: '',
+        name: '',
+        number: '',
+        fromaddress: '',
+        toaddress: '',
+        date: ''
+      };
+      this.addNew = this.addNew.bind(this);
+      this.mynotes = this.mynotes.bind(this);
+    }
+    async componentDidMount() {
+      const {location} = this.props;
+      const {search} = location;
+      const queryParams = _querystringDefault.default.parse(search.slice(1));
+      if (queryParams.admissionsId) ;
+      {
+        const {data} = await _axiosDefault.default.get(`http://localhost:4000/notepad/${(queryParams.ecomexpressId, name, number, fromaddress, toaddress, date)}`);
+        this.setState({
+          ecomexpressId: data.value.ecomexpressId,
+          name: data.value.name,
+          number: data.value.number,
+          fromaddress: data.value,
+          request,
+          toaddress: data.value.toaddress,
+          date: data.value.date
+        });
+      }
+    }
+    async mynotes() {
+      const {history} = this.props;
+      history.push('/Display');
+    }
+    async addNew() {
+      const {ecomexpressId, name, number, fromaddress, toaddress, date} = this.state;
+      await _axiosDefault.default.post('http://localhost:4000/ecomexpress', {
+        ecomexpressId,
+        name,
+        number,
+        fromaddress,
+        toaddress,
+        date
+      });
+    }
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 71,
+            columnNumber: 13
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreAppBarDefault.default, {
+          position: "static",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 72,
+            columnNumber: 18
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreToolbarDefault.default, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 73,
+            columnNumber: 21
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTypographyDefault.default, {
+          variant: "h6",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 77,
+            columnNumber: 21
+          }
+        }, "ecomexpress"))), /*#__PURE__*/_reactDefault.default.createElement("input", {
+          type: "text",
+          placeholder: " name",
+          onChange: event => this.setState(prev => ({
+            name: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 84,
+            columnNumber: 18
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("textarea", {
+          placeholder: "fromaddress",
+          rows: "30",
+          cols: "100",
+          onChange: event => this.setState(prev => ({
+            fromaddress: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 92,
+            columnNumber: 23
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("textarea", {
+          placeholder: "toaddress",
+          rows: "4",
+          cols: "",
+          onChange: event => this.setState(prev => ({
+            toaddress: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 101,
+            columnNumber: 18
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("input", {
+          type: "text",
+          placeholder: " number",
+          onChange: event => this.setState(prev => ({
+            number: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 110,
+            columnNumber: 19
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("input", {
+          type: "text",
+          placeholder: " date",
+          onChange: event => this.setState(prev => ({
+            date: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 118,
+            columnNumber: 19
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          type: "button",
+          onClick: this.addNew,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 128,
+            columnNumber: 17
+          }
+        }, "save parcel address"), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          type: "button",
+          onClick: this.mynotes,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 129,
+            columnNumber: 17
+          }
+        }, "saved "))
+      );
+    }
+  }
+  exports.default = _reactRouterDom.withRouter(home);
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
